@@ -9,7 +9,7 @@ The framework was based on my implementation of the Entity Component System and 
 
 ## How to
 
-Import the files for your project, set up SDL2 library into to IDE and enjoy!
+Import the files for your project, download and set up SDL2 library into to IDE and enjoy!
 
 
 ###### Create GameScene
