@@ -66,39 +66,36 @@ GameplayScene::GameplayScene() : resources{ &scene } { }
 void GameplayScene::Initialize()
 {
     // --- CREATE GAMEOBJECTS --- //
-
-	  GameObject* board = scene.createGameObject();
-	  board->addComponent<TagComponent>("Board");
-	  board->addComponent<SpriteComponent>("C:\\Users\\user\\Desktop\\img\\board.bmp", 480, 512);
-	  board->addComponent<PositionComponent>(0, 0);
+    GameObject* board = scene.createGameObject();
+    board->addComponent<TagComponent>("Board");
+    board->addComponent<SpriteComponent>("C:\\Users\\user\\Desktop\\img\\board.bmp", 480, 512);
+    board->addComponent<PositionComponent>(0, 0);
     
     // --- INITIALIZE SYSTEMS --- //
-
-	  resources.add<SpriteSystem>();
-	  resources.add<MouseSystem>();
-    
-	  resources.configure();
+    resources.add<SpriteSystem>();
+    resources.add<MouseSystem>();
+    resources.configure();
 }
 
 void GameplayScene::Start()
 {
-	  resources.init<SpriteSystem>();
-	  resources.init<MouseSystem>();
+    resources.init<SpriteSystem>();
+    resources.init<MouseSystem>();
 }
 
 void GameplayScene::Input()
 {
-	  resources.update<MouseSystem>();
+    resources.update<MouseSystem>();
 }
 
 void GameplayScene::Update()
 {
-	  resources.update<SpriteSystem>();
+    resources.update<SpriteSystem>();
 }
 
 void GameplayScene::Free()
 {
-	  resources.free<SpriteSystem>();
+    resources.free<SpriteSystem>();
 }
 
 ```
@@ -116,20 +113,17 @@ void GameplayScene::Free()
 #include "GameplayScene.h"
 #include "MenuScene.h"
 
-#include <iostream>
 
 int main(int argc, char *argv[])
 {
-	  TinyEngine2D engine{ "Tic-Tac-Toe", SCREEN_WIDTH, SCREEN_HEIGHT };
+TinyEngine2D engine{ "Tic-Tac-Toe", SCREEN_WIDTH, SCREEN_HEIGHT };
+engine.addGameScene("GameplayScene", new GameplayScene{ });
+engine.addGameScene("MenuScene", new MenuScene{ });
+engine.setFirstGameScene("MenuScene");
 
-	  engine.addGameScene("GameplayScene", new GameplayScene{ });
-	  engine.addGameScene("MenuScene", new MenuScene{ });
+engine.play();
 
-	  engine.setFirstGameScene("MenuScene");
-
-	  engine.play();
-
-	  return 0;
+return 0;
 }
 
 ```
