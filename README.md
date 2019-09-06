@@ -40,16 +40,16 @@ Import the files for your project, set up SDL2 library into to IDE and enjoy!
 
 class GameplayScene : public GameScene
 {
-	public:
-		void Initialize() override;
-		void Start() override;
-		void Input() override;
-		void Update() override;
-		void Free() override;
+    public:
+        void Initialize() override;
+	void Start() override;
+	void Input() override;
+	void Update() override;
+	void Free() override;
 
-	private:
-		Scene scene;
-		Resources resources{ &scene };
+    private:
+        Scene scene;
+	Resources resources{ &scene };
 };
 #endif
 
@@ -116,14 +116,14 @@ void GameplayScene::Free()
 
 int main(int argc, char *argv[])
 {
-TinyEngine2D engine{ "Tic-Tac-Toe", SCREEN_WIDTH, SCREEN_HEIGHT };
-engine.addGameScene("GameplayScene", new GameplayScene{ });
-engine.addGameScene("MenuScene", new MenuScene{ });
-engine.setFirstGameScene("MenuScene");
+    TinyEngine2D engine{ "Tic-Tac-Toe", SCREEN_WIDTH, SCREEN_HEIGHT };
+    engine.addGameScene("GameplayScene", new GameplayScene{ });
+    engine.addGameScene("MenuScene", new MenuScene{ });
+    engine.setFirstGameScene("MenuScene");
 
-engine.play();
+    engine.play();
 
-return 0;
+    return 0;
 }
 
 ```
