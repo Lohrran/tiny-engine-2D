@@ -61,8 +61,6 @@ class GameplayScene : public GameScene
 
 #include "GameplayScene.h"
 
-GameplayScene::GameplayScene() : resources{ &scene } { }
-
 void GameplayScene::Initialize()
 {
     // --- CREATE GAMEOBJECTS --- //
