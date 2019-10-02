@@ -74,6 +74,7 @@ void GameplayScene::Initialize()
     board->addComponent<SpriteComponent>("C:\\Users\\user\\Desktop\\img\\board.bmp", 480, 512);
     board->addComponent<PositionComponent>(0, 0);
     
+    
     // --- INITIALIZE SYSTEMS --- //
     resources->add<SpriteSystem>();
     resources->add<MouseSystem>();
