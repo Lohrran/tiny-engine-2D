@@ -48,8 +48,8 @@ class GameplayScene : public GameScene
 	void Free() override;
 
     private:
-        Scene scene;
-	Resources resources{ &scene };
+        Scene* scene;
+	Resources* resources;
 };
 #endif
 
@@ -63,37 +63,46 @@ class GameplayScene : public GameScene
 
 void GameplayScene::Initialize()
 {
+    // --- CREATE SCENE AND RESOURCES --- //
+    scene = new Scene{ };
+    resources = new Resources{ scene };
+    
+
     // --- CREATE GAMEOBJECTS --- //
-    GameObject* board = scene.createGameObject();
+    GameObject* board = scene->createGameObject();
     board->addComponent<TagComponent>("Board");
     board->addComponent<SpriteComponent>("C:\\Users\\user\\Desktop\\img\\board.bmp", 480, 512);
     board->addComponent<PositionComponent>(0, 0);
     
     // --- INITIALIZE SYSTEMS --- //
-    resources.add<SpriteSystem>();
-    resources.add<MouseSystem>();
-    resources.configure();
+    resources->add<SpriteSystem>();
+    resources->add<MouseSystem>();
+    
+    resources->configure();
 }
 
 void GameplayScene::Start()
 {
-    resources.init<SpriteSystem>();
-    resources.init<MouseSystem>();
+    resources->init<SpriteSystem>();
+    resources->init<MouseSystem>();
 }
 
 void GameplayScene::Input()
 {
-    resources.update<MouseSystem>();
+    resources->update<MouseSystem>();
 }
 
 void GameplayScene::Update()
 {
-    resources.update<SpriteSystem>();
+    resources->update<SpriteSystem>();
 }
 
 void GameplayScene::Free()
 {
-    resources.free<SpriteSystem>();
+    resources->free<SpriteSystem>();
+    
+    delete resources;
+    delete scene;
 }
 
 ```
@@ -115,8 +124,10 @@ void GameplayScene::Free()
 int main(int argc, char *argv[])
 {
     TinyEngine2D engine{ "Tic-Tac-Toe", SCREEN_WIDTH, SCREEN_HEIGHT };
+    
     engine.addGameScene("GameplayScene", new GameplayScene{ });
     engine.addGameScene("MenuScene", new MenuScene{ });
+    
     engine.setFirstGameScene("MenuScene");
 
     engine.play();
