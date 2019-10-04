@@ -1,8 +1,8 @@
 #include "Resources.h"
 
-Resources::Resources(Scene* scene) : scene{ scene } 
-{ 
-	eventChannel = new EventChannel{ }; 
+Resources::Resources(Scene* scene) : scene{ scene }
+{
+	eventChannel = new EventChannel{ };
 }
 
 Resources::~Resources()
@@ -37,8 +37,8 @@ bool Resources::isComponentsEnabled(std::type_index systemType, GameObject* obj)
 bool Resources::requeriments(std::type_index systemType, GameObject* obj)
 {
 	// Count each component that match with the requeriments impose by the system
-	int count = std::count_if(systems[systemType]->getRequeriments().cbegin(), systems[systemType]->getRequeriments().cend(), 
-	[&](std::type_index component)
+	int count = std::count_if(systems[systemType]->getRequeriments().cbegin(), systems[systemType]->getRequeriments().cend(),
+		[&](std::type_index component)
 	{
 		return obj->components.find(component) != std::end(obj->components);
 	});

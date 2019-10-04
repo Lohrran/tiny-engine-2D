@@ -4,7 +4,6 @@
 #include <map>
 #include <memory>
 #include <typeindex>
-#include <set>
 
 #include "Scene.h"
 #include "System.h"
@@ -13,7 +12,7 @@ class Resources
 {
 	public:
 		Resources(Scene* scene);
-		
+
 		Resources(const Resources&) = delete;
 		Resources& operator = (const Resources&) = delete;
 		Resources& operator = (Resources&&) = delete;
@@ -40,6 +39,7 @@ class Resources
 		EventChannel* eventChannel;
 
 		std::map<std::type_index, System*> systems;
+
 	private:
 		bool isComponentsEnabled(std::type_index systemType, GameObject* obj);
 		bool requeriments(std::type_index systemType, GameObject* obj);
@@ -56,7 +56,7 @@ inline void Resources::add()
 
 	if (systems[systemType] == nullptr)
 	{
-		systems[systemType] = new SYSTEM { };
+		systems[systemType] = new SYSTEM{ };
 	}
 }
 
@@ -83,7 +83,7 @@ inline void Resources::update()
 {
 	// Update all obj that fit the requeriments of the system
 	std::type_index systemType = std::type_index(typeid(SYSTEM));
-	
+
 	if (systems[systemType] != nullptr)
 	{
 		for (auto obj : scene->gameObjects())

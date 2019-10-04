@@ -3,14 +3,14 @@
 
 class Component
 {
-	public:
-		Component() : enabled{ true } { }
+public:
+	Component() : enabled{ true } { }
 
-		Component(const Component&) = default;
-		Component& operator = (const Component&) = default;
-		Component& operator = (Component&&) = default;
-		virtual ~Component() = default;
+	Component(const Component&) = default;
+	Component& operator = (const Component&) = default;
+	Component& operator = (Component&&) = default;
+	virtual ~Component() = default;
 
-		bool enabled;
+	bool enabled;
 };
 #endif

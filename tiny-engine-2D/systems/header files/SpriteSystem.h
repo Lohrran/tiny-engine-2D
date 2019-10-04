@@ -1,18 +1,17 @@
 #ifndef SPRITESYSTEM_H
 #define SPRITESYSTEM_H
 
-//Library SDL2
-#include <SDL.h>
-#undef main
+// Engine
+#include "Sprite.h"
 
-//System
+// System
 #include "Requeriment.h"
 
-//Components
+// Components
 #include "SpriteComponent.h"
 #include "PositionComponent.h"
 
-//Camera
+// Camera
 #include "Camera.h"
 
 class SpriteSystem : public Requeriment <SpriteComponent, PositionComponent>
@@ -22,11 +21,8 @@ class SpriteSystem : public Requeriment <SpriteComponent, PositionComponent>
 		void update(GameObject* obj)override;
 		void free(GameObject* obj) override;
 
-		static SDL_Surface* load(const char* path);
-
 	private:
-		SDL_Rect spriteRect;
-		SDL_Rect clipRect;
+		Sprite sprite;
 
 		std::shared_ptr<Camera> camera = Camera::get();
 };

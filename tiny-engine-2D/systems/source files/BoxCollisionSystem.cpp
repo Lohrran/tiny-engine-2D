@@ -1,9 +1,6 @@
 #include "BoxCollisionSystem.h"
 
-void BoxCollisionSystem::init(GameObject* obj)
-{
-
-}
+void BoxCollisionSystem::init(GameObject* obj) { }
 
 void BoxCollisionSystem::update(GameObject* obj)
 {
@@ -19,14 +16,10 @@ void BoxCollisionSystem::update(GameObject* obj)
 	}
 }
 
-void BoxCollisionSystem::free(GameObject* obj)
-{
-
-}
+void BoxCollisionSystem::free(GameObject* obj) { }
 
 bool BoxCollisionSystem::checkBoxCollision(GameObject* obj, GameObject* other)
 {
-	//std::cout << "Check" << std::endl;
 	int obj_left = obj->getComponent<PositionComponent>()->x;
 	int obj_top = obj->getComponent<PositionComponent>()->y;
 	int obj_right = obj->getComponent<PositionComponent>()->x + obj->getComponent<BoxColliderComponent>()->width;

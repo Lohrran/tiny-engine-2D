@@ -2,13 +2,13 @@
 
 System::System(std::vector<std::type_index> req) : requeriments{ req } { }
 
-const std::vector<std::type_index>& System::getRequeriments()
+std::vector<std::type_index>& System::getRequeriments()
 {
 	return requeriments;
 }
 
-void System::configure(EventChannel* evt, Scene* scn) 
-{ 
-	eventChannel = evt; 
-	scene = scn; 
+void System::configure(EventChannel* evt, Scene* scn)
+{
+	eventChannel = evt;
+	scene = scn;
 }

@@ -4,6 +4,7 @@
 #include <map>
 #include <vector>
 #include <typeindex>
+#include <algorithm>
 
 #include "HandlerFunction.h"
 
@@ -16,7 +17,7 @@ class EventChannel
 		EventChannel& operator = (EventChannel&&) = delete;
 
 		~EventChannel();
-	
+
 		template <typename EventType>
 		void publish(EventType* evt);
 

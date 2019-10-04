@@ -15,18 +15,18 @@ class GameObject
 		std::map <std::type_index, Component*> components;
 
 		GameObject(uint32_t id);
-		
+
 		GameObject(const GameObject&) = default;
 		GameObject& operator = (const GameObject& clone) = default;
 		GameObject& operator = (GameObject&&) = default;
 
-		virtual ~GameObject();
+		~GameObject();
 
 		template<typename COMPONENT, typename... Args>
 		void addComponent(Args&&... args);
 
 		template<typename COMPONENT>
-		COMPONENT* getComponent();	
+		COMPONENT* getComponent();
 };
 
 //+++ Implementation +++//

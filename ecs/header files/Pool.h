@@ -17,7 +17,7 @@ class Pool
 		Pool& operator = (Pool&&) = default;
 
 		~Pool();
-		
+
 		void add(GameObject* obj);
 		void remove(GameObject* obj);
 

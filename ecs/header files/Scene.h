@@ -18,10 +18,10 @@ class Scene
 		GameObject* createGameObject();
 		void destroyGameObject(GameObject* obj);
 
-		std::vector<GameObject*> gameObjects();
+		 std::vector<GameObject*> gameObjects();
 
 	protected:
-		Pool* pool = new Pool { };
+		Pool* pool = new Pool{ };
 
 	private:
 		uint32_t entity;

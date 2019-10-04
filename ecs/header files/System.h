@@ -17,7 +17,7 @@ class System
 		virtual void update(GameObject* obj) = 0;
 		virtual void free(GameObject* obj) = 0;
 
-		const std::vector<std::type_index>& getRequeriments();
+		std::vector<std::type_index>& getRequeriments();
 		void configure(EventChannel* evt, Scene* scn);
 
 	protected:

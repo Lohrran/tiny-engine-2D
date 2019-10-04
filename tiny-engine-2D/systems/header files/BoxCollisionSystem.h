@@ -1,8 +1,6 @@
 #ifndef BOXCOLLISIONSYSTEM_H
 #define BOXCOLLISIONSYSTEM_H
 
-#include <iostream>
-
 //System
 #include "Requeriment.h"
 

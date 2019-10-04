@@ -11,7 +11,7 @@ GameObject* Scene::createGameObject()
 {
 	GameObject* obj = new GameObject{ next() };
 	pool->add(obj);
-	
+
 	return obj;
 }
 
